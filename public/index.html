@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Price Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <h1>CryptoTracker</h1>
+        </div>
+        <div class="nav-actions">
+          <select id="currency-switcher" onchange="changeCurrency(event)">
+            <option value="USD">US Dollar (United States)</option>
+            <option value="EUR">Euro (European Union)</option>
+            <option value="GBP">British Pound Sterling (United Kingdom)</option>
+            <option value="JPY">Japanese Yen (Japan)</option>
+            <option value="CAD">Canadian Dollar (Canada)</option>
+            <option value="AUD">Australian Dollar (Australia)</option>
+            <option value="CHF">Swiss Franc (Switzerland)</option>
+            <option value="CNY">Chinese Yuan Renminbi (China)</option>
+            <option value="SEK">Swedish Krona (Sweden)</option>
+            <option value="NOK">Norwegian Krone (Norway)</option>
+            <option value="DKK">Danish Krone (Denmark)</option>
+            <option value="NZD">New Zealand Dollar (New Zealand)</option>
+            <option value="INR">Indian Rupee (India)</option>
+            <option value="IDR">Indonesian Rupiah (Indonesia)</option>
+            <option value="BRL">Brazilian Real (Brazil)</option>
+            <option value="ZAR">South African Rand (South Africa)</option>
+            <option value="MXN">Mexican Peso (Mexico)</option>
+            <option value="SGD">Singapore Dollar (Singapore)</option>
+            <option value="HKD">Hong Kong Dollar (Hong Kong)</option>
+            <option value="KRW">South Korean Won (South Korea)</option>
+            <option value="EGP">Egyptian Pound (Egypt)</option>
+            <option value="AED">United Arab Emirates Dirham (UAE)</option>
+            <option value="SAR">Saudi Riyal (Saudi Arabia)</option>
+            <option value="KWD">Kuwaiti Dinar (Kuwait)</option>
+            <option value="BHD">Bahraini Dinar (Bahrain)</option>
+            <option value="QAR">Qatari Riyal (Qatar)</option>
+            <option value="TRY">Turkish Lira (Turkey)</option>
+            <option value="RUB">Russian Ruble (Russia)</option>
+            <option value="ARS">Argentine Peso (Argentina)</option>
+            <option value="CLP">Chilean Peso (Chile)</option>
+            <option value="COP">Colombian Peso (Colombia)</option>
+            <option value="PYG">Paraguayan Guarani (Paraguay)</option>
+            <option value="UYU">Uruguayan Peso (Uruguay)</option>
+            <option value="CRC">Costa Rican Colón (Costa Rica)</option>
+            <option value="PEN">Peruvian Sol (Peru)</option>
+            <option value="VES">Venezuelan Bolívar Soberano (Venezuela)</option>
+            <option value="GTQ">Guatemalan Quetzal (Guatemala)</option>
+            <option value="HNL">Honduran Lempira (Honduras)</option>
+            <option value="NIO">Nicaraguan Córdoba (Nicaragua)</option>
+            <option value="SVC">Salvadoran Colón (El Salvador)</option>
+            <option value="PAB">Panamanian Balboa (Panama)</option>
+            <option value="BBD">Barbadian Dollar (Barbados)</option>
+            <option value="BSD">Bahamian Dollar (Bahamas)</option>
+            <option value="BZD">Belize Dollar (Belize)</option>
+            <option value="JMD">Jamaican Dollar (Jamaica)</option>
+            <option value="TTD">Trinidad and Tobago Dollar (Trinidad and Tobago)</option>
+            <option value="GYD">Guyanese Dollar (Guyana)</option>
+            <option value="SRD">Surinamese Dollar (Suriname)</option>
+            <option value="AWG">Aruban Florin (Aruba)</option>
+            <option value="ANG">Netherlands Antillean Guilder (Netherlands Antilles)</option>
+            <option value="BMD">Bermudian Dollar (Bermuda)</option>
+            <option value="KYD">Cayman Islands Dollar (Cayman Islands)</option>
+            <option value="GIP">Gibraltar Pound (Gibraltar)</option>
+            <option value="JEP">Jersey Pound (Jersey)</option>
+            <option value="GGP">Guernsey Pound (Guernsey)</option>
+            <option value="IMP">Manx Pound (Isle of Man)</option>
+            <option value="ISK">Icelandic Króna (Iceland)</option>
+            <option value="DJF">Djiboutian Franc (Djibouti)</option>
+            <option value="KES">Kenyan Shilling (Kenya)</option>
+            <option value="UGX">Ugandan Shilling (Uganda)</option>
+            <option value="TZS">Tanzanian Shilling (Tanzania)</option>
+            <option value="RWF">Rwandan Franc (Rwanda)</option>
+            <option value="BIF">Burundian Franc (Burundi)</option>
+            <option value="SOS">Somali Shilling (Somalia)</option>
+            <option value="ETB">Ethiopian Birr (Ethiopia)</option>
+            <option value="ERN">Eritrean Nakfa (Eritrea)</option>
+            <option value="SDG">Sudanese Pound (Sudan)</option>
+            <option value="SSP">South Sudanese Pound (South Sudan)</option>
+            <option value="LYD">Libyan Dinar (Libya)</option>
+            <option value="TND">Tunisian Dinar (Tunisia)</option>
+            <option value="DZD">Algerian Dinar (Algeria)</option>
+            <option value="MRU">Mauritanian Ouguiya (Mauritania)</option>
+            <option value="MAD">Moroccan Dirham (Morocco)</option>
+            <option value="GMD">Gambian Dalasi (Gambia)</option>
+            <option value="GNF">Guinean Franc (Guinea)</option>
+            <option value="SLL">Sierra Leonean Leone (Sierra Leone)</option>
+            <option value="LRD">Liberian Dollar (Liberia)</option>
+            <option value="GHS">Ghanaian Cedi (Ghana)</option>
+            <option value="NGN">Nigerian Naira (Nigeria)</option>
+            <option value="XOF">Beninese Franc (Benin)</option>
+            <option value="XOF">Burkinabé Faso Franc (Burkina Faso)</option>
+            <option value="XOF">Nigerien Franc (Niger)</option>
+            <option value="XOF">Togolese Franc (Togo)</option>
+            <option value="XAF">Cameroonian Franc (Cameroon)</option>
+            <option value="XAF">Central African CFA Franc (Central African Republic)</option>
+            <option value="XAF">Chadian Franc (Chad)</option>
+            <option value="CDF">Congolese Franc (Democratic Republic of the Congo)</option>
+            <option value="AOA">Angolan Kwanza (Angola)</option>
+            <option value="ZMW">Zambian Kwacha (Zambia)</option>
+            <option value="MWK">Malawian Kwacha (Malawi)</option>
+            <option value="MZN">Mozambican Metical (Mozambique)</option>
+            <option value="BWP">Botswanan Pula (Botswana)</option>
+            <option value="LSL">Lesotho Loti (Lesotho)</option>
+            <option value="NAD">Namibian Dollar (Namibia)</option>
+            <option value="SZL">Swazi Lilangeni (Eswatini)</option>
+            <option value="PHP">Philippine Peso (Philippines)</option>
+            <option value="THB">Thai Baht (Thailand)</option>
+            <option value="VND">Vietnamese Dong (Vietnam)</option>
+            <option value="MYR">Malaysian Ringgit (Malaysia)</option>
+            <option value="PKR">Pakistani Rupee (Pakistan)</option>
+            <option value="BDT">Bangladeshi Taka (Bangladesh)</option>
+            <option value="LKR">Sri Lankan Rupee (Sri Lanka)</option>
+            <option value="NPR">Nepalese Rupee (Nepal)</option>
+            <option value="AFN">Afghan Afghani (Afghanistan)</option>
+            <option value="UZS">Uzbekistani Som (Uzbekistan)</option>
+            <option value="KZT">Kazakhstani Tenge (Kazakhstan)</option>
+            <option value="KGS">Kyrgyzstani Som (Kyrgyzstan)</option>
+            <option value="TMT">Turkmenistani Manat (Turkmenistan)</option>
+            <option value="TJS">Tajikistani Somoni (Tajikistan)</option>
+            <option value="GEL">Georgian Lari (Georgia)</option>
+            <option value="AZN">Azerbaijani Manat (Azerbaijan)</option>
+            <option value="AMD">Armenian Dram (Armenia)</option>
+            <option value="IRR">Iranian Rial (Iran)</option>
+            <option value="IQD">Iraqi Dinar (Iraq)</option>
+            <option value="LBP">Lebanese Pound (Lebanon)</option>
+            <option value="SYP">Syrian Pound (Syria)</option>
+            <option value="YER">Yemeni Rial (Yemen)</option>
+            <option value="ZWL">Zimbabwean Dollar (Zimbabwe)</option>
+            <option value="OMR">Omani Rial (Oman)</option>
+            </select>
+            <select id="language-switcher" onchange="changeLanguage(event)">
+              <option value="en">English</option>
+              <option value="ar">العربية</option>
+              <option value="fr">Français</option>
+              <option value="es">Español</option>
+              <option value="de">Deutsch</option>
+              <option value="it">Italiano</option>
+              <option value="zh">中文 (Chinese)</option>
+              <option value="hi">हिन्दी (Hindi)</option>
+              <option value="pt">Português (Portuguese)</option>
+              <option value="ru">Русский (Russian)</option>
+              <option value="ja">日本語 (Japanese)</option>
+              <option value="ko">한국어 (Korean)</option>
+              <option value="bn">বাংলা (Bengali)</option>
+              <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+              <option value="mr">मराठी (Marathi)</option>
+              <option value="te">తెలుగు (Telugu)</option>
+              <option value="ta">தமிழ் (Tamil)</option>
+              <option value="ur">اردو (Urdu)</option>
+              <option value="tr">Türkçe (Turkish)</option>
+              <option value="vi">Tiếng Việt (Vietnamese)</option>
+              <option value="pl">Polski (Polish)</option>
+              <option value="uk">Українська (Ukrainian)</option>
+              <option value="ro">Română (Romanian)</option>
+              <option value="nl">Nederlands (Dutch)</option>
+              <option value="sv">Svenska (Swedish)</option>
+              <option value="el">Ελληνικά (Greek)</option>
+              <option value="cs">Čeština (Czech)</option>
+              <option value="hu">Magyar (Hungarian)</option>
+              <option value="da">Dansk (Danish)</option>
+              <option value="fi">Suomi (Finnish)</option>
+              <option value="no">Norsk (Norwegian)</option>
+              <option value="sk">Slovenčina (Slovak)</option>
+              <option value="hr">Hrvatski (Croatian)</option>
+              <option value="bg">Български (Bulgarian)</option>
+              <option value="sr">Српски (Serbian)</option>
+              <option value="sl">Slovenščina (Slovenian)</option>
+              <option value="lt">Lietuvių (Lithuanian)</option>
+              <option value="lv">Latviešu (Latvian)</option>
+              <option value="et">Eesti (Estonian)</option>
+              <option value="ga">Gaeilge (Irish)</option>
+              <option value="mt">Malti (Maltese)</option>
+              <option value="is">Íslenska (Icelandic)</option>
+              <option value="sq">Shqip (Albanian)</option>
+              <option value="mk">Македонски (Macedonian)</option>
+              <option value="bs">Bosanski (Bosnian)</option>
+              <option value="hy">Հայերեն (Armenian)</option>
+              <option value="ka">ქართული (Georgian)</option>
+              <option value="az">Azərbaycan dili (Azerbaijani)</option>
+              <option value="kk">Қазақ тілі (Kazakh)</option>
+              <option value="uz">Oʻzbek tili (Uzbek)</option>
+              <option value="tk">Türkmen dili (Turkmen)</option>
+              <option value="ky">Кыргыз тили (Kyrgyz)</option>
+              <option value="tg">Тоҷикӣ (Tajik)</option>
+              <option value="mn">Монгол (Mongolian)</option>
+              <option value="km">ខ្មែរ (Khmer)</option>
+              <option value="lo">ລາວ (Lao)</option>
+              <option value="my">ဗမာစာ (Burmese)</option>
+              <option value="fil">Filipino</option>
+              <option value="ms">Bahasa Melayu (Malay)</option>
+              <option value="sw">Kiswahili (Swahili)</option>
+              <option value="zu">isiZulu (Zulu)</option>
+              <option value="xh">isiXhosa</option>
+              <option value="af">Afrikaans</option>
+              <option value="am">አማርኛ (Amharic)</option>
+              <option value="fa">فارسی (Persian)</option>
+              <option value="ps">پښتو (Pashto)</option>
+              <option value="ku">Kurdî (Kurdish)</option>
+              <option value="sd">سنڌي (Sindhi)</option>
+              <option value="si">සිංහල (Sinhala)</option>
+              <option value="rw">Kinyarwanda</option>
+              <option value="yo">Yorùbá (Yoruba)</option>
+              <option value="ig">Igbo</option>
+              <option value="ha">Hausa</option>
+              <option value="mg">Malagasy</option>
+              <option value="gd">Gàidhlig (Scottish Gaelic)</option>
+              <option value="cy">Cymraeg (Welsh)</option>
+              <option value="gaa">Ga (Ghana)</option>
+              <option value="eo">Esperanto</option>
+              </select>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1 id="page-title">Cryptocurrency Prices (USDT Pairs)</h1>
+        <table id="prices-table">
+          <thead>
+              <tr>
+                  <th>Cryptocurrency</th>
+                  <th>Price</th>
+              </tr>
+          </thead>
+          <tbody id="prices-container">
+              <tr>
+                  <td colspan="2">Loading prices...</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+
+    <script >document.addEventListener('DOMContentLoaded', () => {
+      const pricesContainer = document.getElementById('prices-container');
+      const pageTitle = document.getElementById('page-title');
+      const currencySwitcher = document.getElementById('currency-switcher');
+      const languageSwitcher = document.getElementById('language-switcher');
+      const topCoinsSymbols = ['BTC/USDT', 'SOL/USDT', 'TON/USDT', 'ETH/USDT', 'USDT/USDT'];
+      const oldPrices = {}; // Object to store old prices
+      const token = 'your-token-here'; // Replace with your token
+    
+      // Exchange Rates (These would normally come from an API)
+      const exchangeRates = {
+    USD: 1,
+    MAD: 10, // Approximate rate as of April 7, 2025 (1 USD = ~10.0 MAD)
+    EUR: 0.93, // Approximate rate as of April 7, 2025 (1 USD = ~0.93 EUR)
+    GBP: 0.79, // Approximate rate as of April 7, 2025 (1 USD = ~0.79 GBP)
+    JPY: 151, // Approximate rate as of April 7, 2025 (1 USD = ~151 JPY)
+    CAD: 1.37, // Approximate rate as of April 7, 2025 (1 USD = ~1.37 CAD)
+    AUD: 0.66, // Approximate rate as of April 7, 2025 (1 USD = ~1.52 AUD)
+    CHF: 1.10, // Approximate rate as of April 7, 2025 (1 USD = ~0.91 CHF)
+    CNY: 0.14, // Approximate rate as of April 7, 2025 (1 USD = ~7.24 CNY)
+    SEK: 0.092, // Approximate rate as of April 7, 2025 (1 USD = ~10.84 SEK)
+    NOK: 0.094, // Approximate rate as of April 7, 2025 (1 USD = ~10.61 NOK)
+    DKK: 0.14, // Approximate rate as of April 7, 2025 (1 USD = ~6.89 DKK)
+    NZD: 0.60, // Approximate rate as of April 7, 2025 (1 USD = ~1.67 NZD)
+    INR: 0.012, // Approximate rate as of April 7, 2025 (1 USD = ~83.2 INR)
+    IDR: 0.000062, // Approximate rate as of April 7, 2025 (1 USD = ~16120 IDR)
+    BRL: 0.19, // Approximate rate as of April 7, 2025 (1 USD = ~5.20 BRL)
+    ZAR: 0.053, // Approximate rate as of April 7, 2025 (1 USD = ~18.74 ZAR)
+    MXN: 0.061, // Approximate rate as of April 7, 2025 (1 USD = ~16.36 MXN)
+    SGD: 0.74, // Approximate rate as of April 7, 2025 (1 USD = ~1.35 SGD)
+    HKD: 0.13, // Approximate rate as of April 7, 2025 (1 USD = ~7.83 HKD)
+    KRW: 0.00074, // Approximate rate as of April 7, 2025 (1 USD = ~1345 KRW)
+    EGP: 0.021, // Approximate rate as of April 7, 2025 (1 USD = ~47.7 EGP)
+    AED: 0.27, // Approximate rate as of April 7, 2025 (1 USD = ~3.67 AED)
+    SAR: 0.27, // Approximate rate as of April 7, 2025 (1 USD = ~3.75 SAR)
+    KWD: 3.27, // Approximate rate as of April 7, 2025 (1 USD = ~0.31 KWD)
+    BHD: 2.65, // Approximate rate as of April 7, 2025 (1 USD = ~0.38 BHD)
+    QAR: 0.27, // Approximate rate as of April 7, 2025 (1 USD = ~3.64 QAR)
+    TRY: 0.031, // Approximate rate as of April 7, 2025 (1 USD = ~32.5 TRY)
+    RUB: 0.011, // Approximate rate as of April 7, 2025 (1 USD = ~90.8 RUB)
+    ARS: 0.0011, // Approximate rate as of April 7, 2025 (1 USD = ~910 ARS)
+    CLP: 0.0010, // Approximate rate as of April 7, 2025 (1 USD = ~980 CLP)
+    COP: 0.00026, // Approximate rate as of April 7, 2025 (1 USD = ~3850 COP)
+    PYG: 0.00013, // Approximate rate as of April 7, 2025 (1 USD = ~7700 PYG)
+    UYU: 0.026, // Approximate rate as of April 7, 2025 (1 USD = ~38.5 UYU)
+    CRC: 0.0019, // Approximate rate as of April 7, 2025 (1 USD = ~525 CRC)
+    PEN: 0.26, // Approximate rate as of April 7, 2025 (1 USD = ~3.85 PEN)
+    VES: 0.028, // Approximate rate as of April 7, 2025 (1 USD = ~35.7 VES)
+    GTQ: 0.13, // Approximate rate as of April 7, 2025 (1 USD = ~7.75 GTQ)
+    HNL: 0.040, // Approximate rate as of April 7, 2025 (1 USD = ~24.9 HNL)
+    NIO: 0.027, // Approximate rate as of April 7, 2025 (1 USD = ~36.9 NIO)
+    SVC: 0.11, // Approximate rate as of April 7, 2025 (1 USD = ~8.75 SVC)
+    PAB: 1, // Panamanian Balboa is pegged to USD
+    BBD: 0.50, // Barbadian Dollar is pegged at 2 BBD = 1 USD
+    BSD: 1, // Bahamian Dollar is pegged to USD
+    BZD: 0.50, // Belize Dollar is pegged at 2 BZD = 1 USD
+    JMD: 0.0065, // Approximate rate as of April 7, 2025 (1 USD = ~154 JMD)
+    TTD: 0.15, // Approximate rate as of April 7, 2025 (1 USD = ~6.78 TTD)
+    GYD: 0.0048, // Approximate rate as of April 7, 2025 (1 USD = ~208 GYD)
+    SRD: 0.028, // Approximate rate as of April 7, 2025 (1 USD = ~35.5 SRD)
+    AWG: 0.56, // Aruban Florin is pegged at 1.79 AWG = 1 USD
+    ANG: 0.56, // Netherlands Antillean Guilder is pegged at 1.79 ANG = 1 USD
+    BMD: 1, // Bermudian Dollar is pegged to USD
+    KYD: 1.20, // Cayman Islands Dollar is pegged at 1 KYD = 1.20 USD
+    GIP: 1.26, // Gibraltar Pound is pegged to GBP
+    JEP: 1.26, // Jersey Pound is pegged to GBP
+    GGP: 1.26, // Guernsey Pound is pegged to GBP
+    IMP: 1.26, // Manx Pound is pegged to GBP
+    ISK: 0.0072, // Approximate rate as of April 7, 2025 (1 USD = ~139 ISK)
+    DJF: 0.0056, // Approximate rate as of April 7, 2025 (1 USD = ~178 DJF)
+    KES: 0.0077, // Approximate rate as of April 7, 2025 (1 USD = ~130 KES)
+    UGX: 0.00026, // Approximate rate as of April 7, 2025 (1 USD = ~3850 UGX)
+    TZS: 0.00038, // Approximate rate as of April 7, 2025 (1 USD = ~2650 TZS)
+    RWF: 0.00077, // Approximate rate as of April 7, 2025 (1 USD = ~1300 RWF)
+    BIF: 0.00035, // Approximate rate as of April 7, 2025 (1 USD = ~2850 BIF)
+    SOS: 0.0017, // Approximate rate as of April 7, 2025 (1 USD = ~590 SOS)
+    ETB: 0.017, // Approximate rate as of April 7, 2025 (1 USD = ~58 ETB)
+    ERN: 0.067, // Eritrean Nakfa is pegged at 15 ERN = 1 USD
+    SDG: 0.0017, // Approximate rate as of April 7, 2025 (1 USD = ~590 SDG)
+    SSP: 0.0077, // Approximate rate as of April 7, 2025 (1 USD = ~130 SSP)
+    LYD: 0.21, // Approximate rate as of April 7, 2025 (1 USD = ~4.75 LYD)
+    TND: 0.32, // Approximate rate as of April 7, 2025 (1 USD = ~3.15 TND)
+    DZD: 0.0074, // Approximate rate as of April 7, 2025 (1 USD = ~135 DZD)
+    MRU: 0.027, // Approximate rate as of April 7, 2025 (1 USD = ~36.5 MRU)
+    GMD: 0.016, // Approximate rate as of April 7, 2025 (1 USD = ~62 GMD)
+    GNF: 0.00012, // Approximate rate as of April 7, 2025 (1 USD = ~8300 GNF)
+    SLL: 0.000049, // Approximate rate as of April 7, 2025 (1 USD = ~20400 SLL)
+    LRD: 0.0052, // Approximate rate as of April 7, 2025 (1 USD = ~192 LRD)
+    GHS: 0.068, // Approximate rate as of April 7, 2025 (1 USD = ~14.7 GHS)
+    NGN: 0.00069, // Approximate rate as of April 7, 2025 (1 USD = ~1450 NGN)
+    XOF: 0.0016, // Approximate rate as of April 7, 2025 (1 USD = ~615 XOF) - Used for Benin, Burkina Faso, Niger, Togo
+    XAF: 0.0016, // Approximate rate as of April 7, 2025 (1 USD = ~615 XAF) - Used for Cameroon, Central African Republic, Chad
+    CDF: 0.00039, // Approximate rate as of April 7, 2025 (1 USD = ~2550 CDF)
+    AOA: 0.0012, // Approximate rate as of April 7, 2025 (1 USD = ~835 AOA)
+    ZMW: 0.038, // Approximate rate as of April 7, 2025 (1 USD = ~26.5 ZMW)
+    MWK: 0.00058, // Approximate rate as of April 7, 2025 (1 USD = ~1730 MWK)
+    MZN: 0.016, // Approximate rate as of April 7, 2025 (1 USD = ~63 MZN)
+    BWP: 0.073, // Approximate rate as of April 7, 2025 (1 USD = ~13.7 BWP)
+    LSL: 0.053, // Lesotho Loti is pegged to the South African Rand
+    NAD: 0.053, // Namibian Dollar is pegged to the South African Rand
+    SZL: 0.053, // Swazi Lilangeni is pegged to the South African Rand
+    PHP: 0.017, // Approximate rate as of April 7, 2025 (1 USD = ~56.8 PHP)
+    THB: 0.027, // Approximate rate as of April 7, 2025 (1 USD = ~36.6 THB)
+    VND: 0.000039, // Approximate rate as of April 7, 2025 (1 USD = ~25600 VND)
+    MYR: 0.21, // Approximate rate as of April 7, 2025 (1 USD = ~4.74 MYR)
+    PKR: 0.0036, // Approximate rate as of April 7, 2025 (1 USD = ~278 PKR)
+    BDT: 0.0091, // Approximate rate as of April 7, 2025 (1 USD = ~110 BDT)
+    LKR: 0.0033, // Approximate rate as of April 7, 2025 (1 USD = ~300 LKR)
+    NPR: 0.0075, // Approximate rate as of April 7, 2025 (1 USD = ~133 NPR)
+    AFN: 0.014, // Approximate rate as of April 7, 2025 (1 USD = ~71 AFN)
+    UZS: 0.000080, // Approximate rate as of April 7, 2025 (1 USD = ~12500 UZS)
+    KZT: 0.0022, // Approximate rate as of April 7, 2025 (1 USD = ~450 KZT)
+    KGS: 0.011, // Approximate rate as of April 7, 2025 (1 USD = ~89 KGS)
+    TMT: 0.29, // Turkmenistani Manat is pegged at 3.5 TMT = 1 USD
+    TJS: 0.092, // Approximate rate as of April 7, 2025 (1 USD = ~10.8 TJS)
+    GEL: 0.37, // Approximate rate as of April 7, 2025 (1 USD = ~2.7 GEL)
+    AZN: 0.59, // Azerbaijani Manat is pegged at 1.7 AZN = 1 USD
+    AMD: 0.0026, // Approximate rate as of April 7, 2025 (1 USD = ~385 AMD)
+    IRR: 0.000024, // Approximate rate as of April 7, 2025 (1 USD = ~41600 IRR)
+    IQD: 0.00076, // Approximate rate as of April 7, 2025 (1 USD = ~1310 IQD)
+    LBP: 0.000067, // Approximate rate as of April 7, 2025 (1 USD = ~15000 LBP)
+    SYP: 0.00037, // Approximate rate as of April 7, 2025 (1 USD = ~2700 SYP)
+    YER: 0.0040, // Approximate rate as of April 7, 2025 (1 USD = ~250 YER)
+    ZWL: 0.0028, // Approximate rate as of April 7, 2025 (1 USD = ~350 ZWL) - Note: Zimbabwean Dollar has undergone multiple redenominations. This is an approximate value and might fluctuate significantly.
+    OMR: 2.60 // Approximate rate as of April 7, 2025 (1 USD = ~0.385 OMR)
+};
+    
+      // Translation object for English and Dari (DH)
+      const translations = {
+    en: {
+        title: 'Cryptocurrency Prices (USDT Pairs)',
+        loading: 'Loading prices...',
+        noPrices: 'No prices available.',
+        errorFetching: 'Error fetching prices: ',
+        failedFetching: 'Failed to fetch prices.'
+    },
+    ar: {
+        title: 'أسعار العملات الرقمية (جميع الأزواج)',
+        loading: 'جارٍ تحميل الأسعار...',
+        noPrices: 'لا توجد أسعار متاحة.',
+        errorFetching: 'خطأ في تحميل الأسعار: ',
+        failedFetching: 'فشل في تحميل الأسعار.'
+    },
+    fr: {
+        title: 'Prix des Cryptomonnaies (Paires USDT)',
+        loading: 'Chargement des prix...',
+        noPrices: 'Aucun prix disponible.',
+        errorFetching: 'Erreur lors du téléchargement des prix: ',
+        failedFetching: 'Échec du téléchargement des prix.'
+    },
+    es: {
+        title: 'Precios de las Criptomonedas (Pares USDT)',
+        loading: 'Cargando precios...',
+        noPrices: 'No hay precios disponibles.',
+        errorFetching: 'Error al cargar los precios: ',
+        failedFetching: 'Error al cargar los precios.'
+    },
+    de: {
+        title: 'Kryptowährungspreise (USDT-Paare)',
+        loading: 'Lade Preise...',
+        noPrices: 'Keine Preise verfügbar.',
+        errorFetching: 'Fehler beim Laden der Preise: ',
+        failedFetching: 'Fehler beim Laden der Preise.'
+    },
+    it: {
+        title: 'Prezzi delle Criptovalute (Coppie USDT)',
+        loading: 'Caricamento dei prezzi...',
+        noPrices: 'Nessun prezzo disponibile.',
+        errorFetching: 'Errore nel caricamento dei prezzi: ',
+        failedFetching: 'Errore nel caricamento dei prezzi.'
+    },
+    zh: {
+        title: '加密货币价格 (USDT 交易对)',
+        loading: '正在加载价格...',
+        noPrices: '没有可用的价格。',
+        errorFetching: '加载价格时出错: ',
+        failedFetching: '加载价格失败。'
+    },
+    hi: {
+        title: 'क्रिप्टोकरेंसी कीमतें (यूएसडीटी जोड़े)',
+        loading: 'कीमतें लोड हो रही हैं...',
+        noPrices: 'कोई कीमत उपलब्ध नहीं।',
+        errorFetching: 'कीमतें लोड करने में त्रुटि: ',
+        failedFetching: 'कीमतें लोड करने में विफल।'
+    },
+    pt: {
+        title: 'Preços de Criptomoedas (Pares USDT)',
+        loading: 'Carregando preços...',
+        noPrices: 'Nenhum preço disponível.',
+        errorFetching: 'Erro ao carregar preços: ',
+        failedFetching: 'Falha ao carregar preços.'
+    },
+    ru: {
+        title: 'Цены на криптовалюты (пары USDT)',
+        loading: 'Загрузка цен...',
+        noPrices: 'Нет доступных цен.',
+        errorFetching: 'Ошибка загрузки цен: ',
+        failedFetching: 'Не удалось загрузить цены.'
+    },
+    ja: {
+        title: '暗号通貨価格 (USDTペア)',
+        loading: '価格をロード中...',
+        noPrices: '利用可能な価格はありません。',
+        errorFetching: '価格のロードエラー: ',
+        failedFetching: '価格のロードに失敗しました。'
+    },
+    ko: {
+        title: '암호화폐 가격 (USDT 쌍)',
+        loading: '가격 로딩 중...',
+        noPrices: '사용 가능한 가격이 없습니다.',
+        errorFetching: '가격 로딩 오류: ',
+        failedFetching: '가격 로딩 실패.'
+    },
+    bn: {
+        title: 'ক্রিপ্টোকারেন্সি মূল্য (ইউএসডিটি পেয়ার)',
+        loading: 'মূল্য লোড হচ্ছে...',
+        noPrices: 'কোন মূল্য উপলব্ধ নেই।',
+        errorFetching: 'মূল্য লোড করতে সমস্যা: ',
+        failedFetching: 'মূল্য লোড করা যায়নি।'
+    },
+    pa: {
+        title: 'ਕਰਿਪਟੋਕਰੰਸੀ ਕੀਮਤਾਂ (USDT ਜੋੜੇ)',
+        loading: 'ਕੀਮਤਾਂ ਲੋਡ ਹੋ ਰਹੀਆਂ ਹਨ...',
+        noPrices: 'ਕੋਈ ਕੀਮਤ ਉਪਲਬਧ ਨਹੀਂ ਹੈ।',
+        errorFetching: 'ਕੀਮਤਾਂ ਲੋਡ ਕਰਨ ਵਿੱਚ ਗਲਤੀ: ',
+        failedFetching: 'ਕੀਮਤਾਂ ਲੋਡ ਕਰਨ ਵਿੱਚ ਅਸਫਲ।'
+    },
+    mr: {
+        title: 'क्रिप्टोकरन्सी किंमती (USDT जोड्या)',
+        loading: 'किंमती लोड होत आहेत...',
+        noPrices: 'कोणतीही किंमत उपलब्ध नाही.',
+        errorFetching: 'किंमती लोड करण्यात त्रुटी: ',
+        failedFetching: 'किंमती लोड करण्यात अयशस्वी.'
+    },
+    te: {
+        title: 'క్రిప్టోకరెన్సీ ధరలు (USDT జతలు)',
+        loading: 'ధరలు లోడ్ అవుతున్నాయి...',
+        noPrices: 'ధరలు అందుబాటులో లేవు.',
+        errorFetching: 'ధరలను లోడ్ చేయడంలో లోపం: ',
+        failedFetching: 'ధరలను లోడ్ చేయడంలో విఫలమైంది.'
+    },
+    ta: {
+        title: 'கிரிப்டோகரன்சி விலைகள் (USDT ஜோடிகள்)',
+        loading: 'விலைகள் ஏற்றப்படுகின்றன...',
+        noPrices: 'விலைகள் எதுவும் கிடைக்கவில்லை.',
+        errorFetching: 'விலைகளை ஏற்றும் போது பிழை: ',
+        failedFetching: 'விலைகளை ஏற்ற முடியவில்லை.'
+    },
+    ur: {
+        title: 'کرپٹو کرنسی کی قیمتیں (USDT جوڑے)',
+        loading: 'قیمتیں لوڈ ہو رہی ہیں...',
+        noPrices: 'کوئی قیمت دستیاب نہیں ہے۔',
+        errorFetching: 'قیمتیں لوڈ کرنے میں خرابی: ',
+        failedFetching: 'قیمتیں لوڈ کرنے میں ناکام۔'
+    },
+    tr: {
+        title: 'Kripto Para Fiyatları (USDT Çiftleri)',
+        loading: 'Fiyatlar yükleniyor...',
+        noPrices: 'Uygun fiyat yok.',
+        errorFetching: 'Fiyatlar yüklenirken hata oluştu: ',
+        failedFetching: 'Fiyatlar yüklenemedi.'
+    },
+    vi: {
+        title: 'Giá tiền điện tử (Cặp USDT)',
+        loading: 'Đang tải giá...',
+        noPrices: 'Không có giá nào khả dụng.',
+        errorFetching: 'Lỗi khi tải giá: ',
+        failedFetching: 'Không tải được giá.'
+    },
+    pl: {
+        title: 'Ceny kryptowalut (Pary USDT)',
+        loading: 'Ładowanie cen...',
+        noPrices: 'Brak dostępnych cen.',
+        errorFetching: 'Błąd podczas ładowania cen: ',
+        failedFetching: 'Nie udało się załadować cen.'
+    },
+    uk: {
+        title: 'Ціни на криптовалюти (пари USDT)',
+        loading: 'Завантаження цін...',
+        noPrices: 'Немає доступних цін.',
+        errorFetching: 'Помилка завантаження цін: ',
+        failedFetching: 'Не вдалося завантажити ціни.'
+    },
+    ro: {
+        title: 'Prețurile criptomonedelor (Perechi USDT)',
+        loading: 'Se încarcă prețurile...',
+        noPrices: 'Niciun preț disponibil.',
+        errorFetching: 'Eroare la încărcarea prețurilor: ',
+        failedFetching: 'Nu s-au putut încărca prețurile.'
+    },
+    nl: {
+        title: 'Cryptocurrency Prijzen (USDT Paren)',
+        loading: 'Prijzen laden...',
+        noPrices: 'Geen prijzen beschikbaar.',
+        errorFetching: 'Fout bij het laden van prijzen: ',
+        failedFetching: 'Prijzen konden niet worden geladen.'
+    },
+    sv: {
+        title: 'Priser för kryptovalutor (USDT-par)',
+        loading: 'Läser in priser...',
+        noPrices: 'Inga priser tillgängliga.',
+        errorFetching: 'Fel vid inläsning av priser: ',
+        failedFetching: 'Kunde inte läsa in priser.'
+    },
+    el: {
+        title: 'Τιμές Κρυπτονομισμάτων (Ζεύγη USDT)',
+        loading: 'Φόρτωση τιμών...',
+        noPrices: 'Δεν υπάρχουν διαθέσιμες τιμές.',
+        errorFetching: 'Σφάλμα κατά τη φόρτωση των τιμών: ',
+        failedFetching: 'Αποτυχία φόρτωσης των τιμών.'
+    },
+    cs: {
+        title: 'Ceny kryptoměn (USDT páry)',
+        loading: 'Načítání cen...',
+        noPrices: 'Žádné dostupné ceny.',
+        errorFetching: 'Chyba při načítání cen: ',
+        failedFetching: 'Nepodařilo se načíst ceny.'
+    },
+    hu: {
+        title: 'Kriptovaluta árak (USDT párok)',
+        loading: 'Árak betöltése...',
+        noPrices: 'Nincs elérhető ár.',
+        errorFetching: 'Hiba az árak betöltésekor: ',
+        failedFetching: 'Az árak betöltése sikertelen.'
+    },
+    da: {
+        title: 'Kryptovalutapriser (USDT-par)',
+        loading: 'Indlæser priser...',
+        noPrices: 'Ingen priser tilgængelige.',
+        errorFetching: 'Fejl ved indlæsning af priser: ',
+        failedFetching: 'Kunne ikke indlæse priser.'
+    },
+    fi: {
+        title: 'Kryptovaluuttojen hinnat (USDT-parit)',
+        loading: 'Ladataan hintoja...',
+        noPrices: 'Hintoja ei ole saatavilla.',
+        errorFetching: 'Virhe ladattaessa hintoja: ',
+        failedFetching: 'Hintojen lataaminen epäonnistui.'
+    },
+    no: {
+        title: 'Kryptovalutapriser (USDT-par)',
+        loading: 'Laster priser...',
+        noPrices: 'Ingen priser tilgjengelig.',
+        errorFetching: 'Feil ved lasting av priser: ',
+        failedFetching: 'Klarte ikke laste priser.'
+    },
+    sk: {
+        title: 'Ceny kryptomien (USDT páry)',
+        loading: 'Načítavajú sa ceny...',
+        noPrices: 'Žiadne dostupné ceny.',
+        errorFetching: 'Chyba pri načítavaní cien: ',
+        failedFetching: 'Nepodarilo sa načítať ceny.'
+    },
+    hr: {
+        title: 'Cijene kriptovaluta (USDT parovi)',
+        loading: 'Učitavanje cijena...',
+        noPrices: 'Nema dostupnih cijena.',
+        errorFetching: 'Pogreška pri učitavanju cijena: ',
+        failedFetching: 'Neuspješno učitavanje cijena.'
+    },
+    bg: {
+        title: 'Цени на криптовалути (USDT двойки)',
+        loading: 'Зареждане на цени...',
+        noPrices: 'Няма налични цени.',
+        errorFetching: 'Грешка при зареждане на цените: ',
+        failedFetching: 'Неуспешно зареждане на цените.'
+    },
+    sr: {
+        title: 'Цене криптовалута (USDT парови)',
+        loading: 'Учитавање цена...',
+        noPrices: 'Нема доступних цена.',
+        errorFetching: 'Грешка при учитавању цена: ',
+        failedFetching: 'Неуспешно учитавање цена.'
+    },
+    sl: {
+        title: 'Cene kriptovalut (USDT pari)',
+        loading: 'Nalaganje cen...',
+        noPrices: 'Ni razpoložljivih cen.',
+        errorFetching: 'Napaka pri nalaganju cen: ',
+        failedFetching: 'Nalaganje cen ni uspelo.'
+    },
+    lt: {
+        title: 'Kriptovaliutų kainos (USDT poros)',
+        loading: 'Kraunamos kainos...',
+        noPrices: 'Kainų nėra.',
+        errorFetching: 'Klaida kraunant kainas: ',
+        failedFetching: 'Nepavyko įkelti kainų.'
+    },
+    lv: {
+        title: 'Kriptovalūtu cenas (USDT pāri)',
+        loading: 'Cenu ielāde...',
+        noPrices: 'Cenu nav.',
+        errorFetching: 'Kļūda ielādējot cenas: ',
+        failedFetching: 'Neizdevās ielādēt cenas.'
+    },
+    et: {
+        title: 'Krüptovaluutade hinnad (USDT paarid)',
+        loading: 'Hindade laadimine...',
+        noPrices: 'Hinnad pole saadaval.',
+        errorFetching: 'Viga hindade laadimisel: ',
+        failedFetching: 'Hindade laadimine ebaõnnestus.'
+    },
+    ga: {
+        title: 'Praghsanna Cryptocurrency (Péirí USDT)',
+        loading: 'Ag luchtú praghsanna...',
+        noPrices: 'Níl aon phraghsanna ar fáil.',
+        errorFetching: 'Earráid agus praghsanna á luchtú: ',
+        failedFetching: 'Theip ar luchtú praghsanna.'
+    },
+    mt: {
+        title: 'Prezzijiet tal-Kriptomuniti (Pari USDT)',
+        loading: 'Qed jitgħabbew il-prezzijiet...',
+        noPrices: 'L-ebda prezz disponibbli.',
+        errorFetching: 'Żball fit-tagħbija tal-prezzijiet: ',
+        failedFetching: 'It-tagħbija tal-prezzijiet falliet.'
+    },
+    is: {
+        title: 'Verð á dulritunargjaldmiðlum (USDT pör)',
+        loading: 'Hleð inn verðum...',
+        noPrices: 'Engin verð eru tiltæk.',
+        errorFetching: 'Villa við hleðslu verða: ',
+        failedFetching: 'Mistókst að hlaða verð.'
+    },
+    sq: {
+        title: 'Çmimet e Kriptovalutave (Çifte USDT)',
+        loading: 'Duke ngarkuar çmimet...',
+        noPrices: 'Nuk ka çmime të disponueshme.',
+        errorFetching: 'Gabim gjatë ngarkimit të çmimeve: ',
+        failedFetching: 'Ngarkimi i çmimeve dështoi.'
+    },
+    mk: {
+        title: 'Цени на криптовалути (USDT парови)',
+        loading: 'Се вчитуваат цените...',
+        noPrices: 'Нема достапни цени.',
+        errorFetching: 'Грешка при вчитување на цените: ',
+        failedFetching: 'Неуспешно вчитување на цените.'
+    },
+    bs: {
+        title: 'Cijene kriptovaluta (USDT parovi)',
+        loading: 'Učitavanje cijena...',
+        noPrices: 'Nema dostupnih cijena.',
+        errorFetching: 'Greška pri učitavanju cijena: ',
+        failedFetching: 'Neuspješno učitavanje cijena.'
+    },
+    hy: {
+        title: 'Կրիպտոարժույթների գներ (USDT զույգեր)',
+        loading: 'Գները բեռնվում են...',
+        noPrices: 'Գներ չկան:',
+        errorFetching: 'Գները բեռնելու սխալ:',
+        failedFetching: 'Գները բեռնելը ձախողվեց:'
+    },
+    ka: {
+        title: 'კრიპტოვალუტის ფასები (USDT წყვილები)',
+        loading: 'ფასების ჩატვირთვა...',
+        noPrices: 'ფასები არ არის ხელმისაწვდომი.',
+        errorFetching: 'ფასების ჩატვირთვის შეცდომა: ',
+        failedFetching: 'ფასების ჩატვირთვა ვერ მოხერხდა.'
+    },
+    az: {
+        title: 'Kriptovalyuta qiymətləri (USDT cütlükləri)',
+        loading: 'Qiymətlər yüklənir...',
+        noPrices: 'Mövcud qiymət yoxdur.',
+        errorFetching: 'Qiymətləri yükləmə xətası: ',
+        failedFetching: 'Qiymətləri yükləmək alınmadı.'
+    },
+    kk: {
+        title: 'Криптовалюта бағалары (USDT жұптары)',
+        loading: 'Бағалар жүктелуде...',
+        noPrices: 'Қолжетімді баға жоқ.',
+        errorFetching: 'Бағаларды жүктеу қатесі: ',
+        failedFetching: 'Бағаларды жүктеу сәтсіз аяқталды.'
+    },
+    uz: {
+        title: 'Kriptovalyuta narxlari (USDT juftliklari)',
+        loading: 'Narxlar yuklanmoqda...',
+        noPrices: 'Narxlar mavjud emas.',
+        errorFetching: 'Narxlarni yuklashda xatolik: ',
+        failedFetching: 'Narxlarni yuklash muvaffaqiyatsiz tugadi.'
+    },
+    tk: {
+        title: 'Kriptowalýuta bahalary (USDT jübtleri)',
+        loading: 'Bahalar ýüklenýär...',
+        noPrices: 'Bahalar ýok.',
+        errorFetching: 'Bahalary ýüklemekde säwlik: ',
+        failedFetching: 'Bahalary ýükläp bolmady.'
+    },
+    ky: {
+        title: 'Криптовалюталардын баалары (USDT жуптары)',
+        loading: 'Баалар жүктөлүүдө...',
+        noPrices: 'Баалар жеткиликтүү эмес.',
+        errorFetching: 'Бааларды жүктөөдө ката кетти: ',
+        failedFetching: 'Бааларды жүктөө ишке ашкан жок.'
+    },
+    tg: {
+        title: 'Нархҳои криптовалютӣ (ҷуфтҳои USDT)',
+        loading: 'Боркунии нархҳо...',
+        noPrices: 'Нархҳо дастрас нестанд.',
+        errorFetching: 'Хатогии боркунии нархҳо: ',
+        failedFetching: 'Боркунии нархҳо ноком шуд.'
+    },
+    mn: {
+        title: 'Криптовалютын үнэ (USDT хос)',
+        loading: 'Үнэ ачаалж байна...',
+        noPrices: 'Үнэ байхгүй байна.',
+        errorFetching: 'Үнэ ачаалах алдаа: ',
+        failedFetching: 'Үнэ ачаалж чадсангүй.'
+    },
+    km: {
+        title: 'តម្លៃរូបិយប័ណ្ណគ្រីបតូ (គូ USDT)',
+        loading: 'កំពុងផ្ទុករូបិយប័ណ្ណ...',
+        noPrices: 'មិនមានតម្លៃទេ។',
+        errorFetching: 'កំហុសក្នុងការផ្ទុកតម្លៃ៖ ',
+        failedFetching: 'ការផ្ទុកតម្លៃបានបរាជ័យ។'
+    },
+    lo: {
+        title: 'ລາຄາສະກຸນເງິນດິຈິຕອນ (ຄູ່ USDT)',
+        loading: 'ກຳລັງໂຫຼດລາຄາ...',
+        noPrices: 'ບໍ່ມີລາຄາ.',
+        errorFetching: 'ເກີດຂໍ້ຜິດພາດໃນການໂຫຼດລາຄາ: ',
+        failedFetching: 'ການໂຫຼດລາຄາລົ້ມເຫລວ.'
+    },
+    my: {
+        title: 'ဒစ်ဂျစ်တယ်ငွေကြေးစျေးနှုန်းများ (USDT အတွဲများ)',
+        loading: 'စျေးနှုန်းများ တင်နေသည်...',
+        noPrices: 'စျေးနှုန်းများ မရှိပါ။',
+        errorFetching: 'စျေးနှုန်းများ တင်ရာတွင် အမှားအယွင်း- ',
+        failedFetching: 'စျေးနှုန်းများ တင်ရန် ပျက်ကွက်ခဲ့သည်။'
+    },
+    fil: {
+        title: 'Mga Presyo ng Cryptocurrency (USDT Pairs)',
+        loading: 'Naglo-load ng mga presyo...',
+        noPrices: 'Walang mga presyo na magagamit.',
+        errorFetching: 'Error sa pag-load ng mga presyo: ',
+        failedFetching: 'Nabigong i-load ang mga presyo.'
+    },
+    ms: {
+        title: 'Harga Mata Wang Kripto (Pasangan USDT)',
+        loading: 'Memuatkan harga...',
+        noPrices: 'Tiada harga yang tersedia.',
+        errorFetching: 'Ralat memuatkan harga: ',
+        failedFetching: 'Gagal memuatkan harga.'
+    },
+    sw: {
+        title: 'Bei za Cryptocurrency (Jozi za USDT)',
+        loading: 'Inapakia bei...',
+        noPrices: 'Hakuna bei zinazopatikana.',
+        errorFetching: 'Hitilafu wakati wa kupakia bei: ',
+        failedFetching: 'Imeshindwa kupakia bei.'
+    },
+    zu: {
+        title: 'Amanani e-Cryptocurrency (Ama-USDT Pairs)',
+        loading: 'Ilayisha amanani...',
+        noPrices: 'Awekho amanani atholakalayo.',
+        errorFetching: 'Iphutha ekulayisheni amanani: ',
+        failedFetching: 'Ukulayisha amanani kuhlulekile.'
+    },
+    xh: {
+        title: 'Amaxabiso e-Cryptocurrency (iiPairs ze-USDT)',
+        loading: 'Iyalayisha amaxabiso...',
+        noPrices: 'Amaxabiso awafumaneki.',
+        errorFetching: 'Impazamo ekulayisheni amaxabiso: ',
+        failedFetching: 'Ukulayisha amaxabiso akuzange kuphumelele.'
+    },
+    af: {
+        title: 'Cryptocurrency Pryse (USDT Pare)',
+        loading: 'Laai pryse...',
+        noPrices: 'Geen pryse beskikbaar nie.',
+        errorFetching: 'Fout met die laai van pryse: ',
+        failedFetching: 'Kon nie pryse laai nie.'
+    },
+    am: {
+        title: 'የክሪፕቶ ምንዛሬ ዋጋዎች (USDT ጥንዶች)',
+        loading: 'ዋጋዎች በመጫን ላይ...',
+        noPrices: 'ምንም ዋጋ የለም።',
+        errorFetching: 'ዋጋዎችን በመጫን ላይ ስህተት:',
+        failedFetching: 'ዋጋዎችን መጫን አልተሳካም።'
+    },
+    fa: {
+        title: 'قیمت ارزهای دیجیتال (جفت های USDT)',
+        loading: 'در حال بارگذاری قیمت ها...',
+        noPrices: 'هیچ قیمتی در دسترس نیست.',
+        errorFetching: 'خطا در بارگذاری قیمت ها: ',
+        failedFetching: 'بارگذاری قیمت ها با شکست مواجه شد.'
+    },
+    ps: {
+        title: 'د کریپټو اسعارو قیمتونه (USDT جوړې)',
+        loading: 'قیمتونه بار کیږي...',
+        noPrices: 'هیڅ قیمت شتون نلري.',
+        errorFetching: 'د قیمتونو په بارولو کې تېروتنه: ',
+        failedFetching: 'د قیمتونو بارول ناکام شول.'
+    },
+    ku: {
+        title: 'Bihayên Krîptoparayan (Cotên USDT)',
+        loading: 'Bihayên bar dibin...',
+        noPrices: 'Bihayên berdest tune ne.',
+        errorFetching: 'Di barkirina bihayê de çewtî: ',
+        failedFetching: 'Barkirina bihayê bi ser neket.'
+    },
+    sd: {
+        title: 'Cryptocurrency قيمتون (USDT جوڙا)',
+        loading: 'قيمتون لوڊ ٿي رهيون آهن...',
+        noPrices: 'ڪا به قيمت موجود ناهي.',
+        errorFetching: 'قيمتون لوڊ ڪرڻ ۾ خرابي: ',
+        failedFetching: 'قيمتون لوڊ ڪرڻ ۾ ناڪام.'
+    },
+    si: {
+        title: 'Cryptocurrency මිල ගණන් (USDT යුගල)',
+        loading: 'මිල ගණන් පූරණය වෙමින් පවතී...',
+        noPrices: 'මිල ගණන් නොමැත.',
+        errorFetching: 'මිල ගණන් පූරණය කිරීමේ දෝෂය: ',
+        failedFetching: 'මිල ගණන් පූරණය කිරීම අසාර්ථක විය.'
+    },
+    rw: {
+        title: 'Ibicuruzwa bya Cryptocurrency (USDT Pairs)',
+        loading: 'Gupakira ibiciro...',
+        noPrices: 'Nta biciro biboneka.',
+        errorFetching: 'Ikosa mu gutwara ibiciro: ',
+        failedFetching: 'Kunanirwa gutwara ibiciro.'
+    },
+    yo: {
+        title: 'Àwọn Iye Owo Cryptocurrency (USDT Pairs)',
+        loading: 'Awọn iye owo n ṣajọ...',
+        noPrices: 'Ko si iye owo to wa.',
+        errorFetching: 'Aṣiṣe ni gbigbe awọn iye owo: ',
+        failedFetching: 'Gbigbe awọn iye owo kuna.'
+    },
+    ig: {
+        title: 'Ọnụahịa Cryptocurrency (USDT Pairs)',
+        loading: 'Na-ebugo ọnụahịa...',
+        noPrices: 'Ọ dịghị ọnụahịa dị.',
+        errorFetching: 'Mhie na-ebugo ọnụahịa: ',
+        failedFetching: 'Ịbugo ọnụahịa adaala.'
+    },
+    ha: {
+        title: 'Farashin Cryptocurrency (USDT Pairs)',
+        loading: 'Ana loda farashin...',
+        noPrices: 'Babu farashi da ake samu.',
+        errorFetching: 'Kuskure wajen loda farashin: ',
+        failedFetching: 'An kasa loda farashin.'
+    },
+    mg: {
+        title: 'Vidin’ny Cryptocurrency (USDT Pairs)',
+        loading: 'Mampakatra vidiny...',
+        noPrices: 'Tsy misy vidiny azo alaina.',
+        errorFetching: 'Hadisoa tamin’ny fampidinana ny vidiny: ',
+        failedFetching: 'Tsy nahomby ny fampidinana ny vidiny.'
+    },
+    gd: {
+        title: 'Prìsean Cryptocurrency (Paidhean USDT)',
+        loading: 'A’ luchdachadh phrìsean...',
+        noPrices: 'Chan eil prìsean ri fhaighinn.',
+        errorFetching: 'Mearachd le luchdachadh phrìsean: ',
+        failedFetching: 'Dh’fhàillig luchdachadh phrìsean.'
+    },
+    cy: {
+        title: 'Prisiau Arian Cyfred Digidol (Parau USDT)',
+        loading: 'Yn llwytho prisiau...',
+        noPrices: 'Dim prisiau ar gael.',
+        errorFetching: 'Gwall wrth lwytho prisiau: ',
+        failedFetching: 'Methwyd â llwytho prisiau.'
+    },
+    gaa: {
+        title: 'Kripto sika kpɔmɔ woji (USDT Pairs)',
+        loading: 'Sikatsɔɔmɔ woji miiba...',
+        noPrices: 'Sika kpɔmɔ woji bɛ.',
+        errorFetching: 'Gbɔŋ ni yɔɔ sika kpɔmɔ woji lɛ amli: ',
+        failedFetching: 'Sikatsɔɔmɔ woji lɛ gbɔŋ.'
+    },
+    eo: {
+        title: 'Prezoj de Kriptovalutoj (USDT Paroj)',
+        loading: 'Ŝarĝante prezojn...',
+        noPrices: 'Neniuj prezoj disponeblas.',
+        errorFetching: 'Eraro dum ŝarĝo de prezoj: ',
+        failedFetching: 'Ŝarĝo de prezoj malsukcesis.'
+    },
+    // ... (You will need to add translations for the remaining languages here)
+    dh: {
+        title: 'قیمت ارزهای دیجیتال (جفت USDT)',
+        loading: 'در حال بارگذاری قیمت‌ها...',
+        noPrices: 'قیمت‌ها در دسترس نیست.',
+        errorFetching: 'خطا در بارگذاری قیمت‌ها: ',
+        failedFetching: 'بارگذاری قیمت‌ها شکست خورد.'
+    }
+};
+    
+      // Default language and currency
+        // Default language and currency
+    let currentLanguage = 'en';
+    let currentCurrency = 'USD';
+
+    // Function to update the text based on language
+    const translatePage = (lang) => {
+        pageTitle.textContent = translations[lang].title;
+        pricesContainer.innerHTML = `<tr><td colspan="2">${translations[lang].loading}</td></tr>`;
+    };
+
+    // Function to update the currency
+    window.changeCurrency = (event) => {
+        currentCurrency = event.target.value;
+        fetchPrices(); // Fetch prices again after currency change
+    };
+
+    // Function to update the language
+    window.changeLanguage = (event) => {
+        currentLanguage = event.target.value;
+        translatePage(currentLanguage);
+        fetchPrices(); // Fetch prices again after language change
+    };
+
+    // Fetch prices from the API
+    const fetchPrices = async () => {
+        try {
+            const response = await fetch('/api/prices', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                pricesContainer.innerHTML = ''; // Clear loading message
+
+                if (data && data.length > 0) {
+                    const filteredData = data.filter(item => parseFloat(item.price) >= 1);
+
+                    const topCoins = [];
+                    const otherCoins = [];
+
+                    // Separate top coins and other coins
+                    filteredData.forEach(item => {
+                        if (topCoinsSymbols.includes(item.symbol)) {
+                            topCoins.push(item);
+                        } else {
+                            otherCoins.push(item);
+                        }
+                    });
+
+                    // Function to create a price item row for the table
+                    const createPriceRow = (item) => {
+                        const row = document.createElement('tr');
+                        const symbolCell = document.createElement('td');
+                        const priceCell = document.createElement('td');
+
+                        symbolCell.textContent = item.symbol;
+
+                        // Convert price based on selected currency
+                        const usdPrice = parseFloat(item.price);
+                        const convertedPrice = (usdPrice * exchangeRates[currentCurrency]).toFixed(2);
+
+                        priceCell.textContent = `${currentCurrency === 'MAD' ? 'د.م.' : currentCurrency === 'EUR' ? '€' : currentCurrency === 'AED' ? 'د.إ.' : currentCurrency === 'GBP' ? '£' : currentCurrency === 'JPY' ? '¥' : currentCurrency === 'CAD' ? 'C$' : '$'} ${convertedPrice}`;
+
+                        // Compare with old price and set color
+                        const oldPrice = oldPrices[item.symbol];
+                        const newPrice = parseFloat(item.price);
+
+                        // Compare the new price with the old price
+                        if (oldPrice !== undefined) {
+                            if (newPrice > oldPrice) {
+                                priceCell.style.color = 'green'; // Green if new price is greater than old price
+                            } else if (newPrice < oldPrice) {
+                                priceCell.style.color = 'red'; // Red if new price is less than old price
+                            }
+                        }
+
+                        // Update old price
+                        oldPrices[item.symbol] = newPrice;
+
+                        row.appendChild(symbolCell);
+                        row.appendChild(priceCell);
+
+                        return row;
+                    };
+
+                    // Display top coins first
+                    topCoins.forEach(coin => {
+                        pricesContainer.appendChild(createPriceRow(coin));
+                    });
+
+                    // Display other coins
+                    otherCoins.forEach(coin => {
+                        pricesContainer.appendChild(createPriceRow(coin));
+                    });
+
+                } else {
+                    pricesContainer.innerHTML = `<tr><td colspan="2">${translations[currentLanguage].noPrices}</td></tr>`;
+                }
+            } else {
+                pricesContainer.innerHTML = `<tr><td colspan="2">${translations[currentLanguage].errorFetching} ${response.status}</td></tr>`;
+            }
+        } catch (error) {
+            console.error('Error fetching prices:', error);
+            pricesContainer.innerHTML = `<tr><td colspan="2">${translations[currentLanguage].failedFetching}</td></tr>`;
+        }
+    };
+
+    // Initial fetch
+    translatePage(currentLanguage);
+    fetchPrices();
+
+    // Fetch prices every 15 seconds
+    setInterval(fetchPrices, 1000);
+});
+    </script>
+</body>
+</html>
