@@ -1,4 +1,3 @@
-Awesome — once you've finished building your app, here’s a sample `README.md` for your GitHub repo:
 
 ---
 
